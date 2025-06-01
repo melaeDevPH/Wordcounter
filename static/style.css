@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: repeating-linear-gradient(
+    180deg,               
+    #f8e3ef 0,               
+    #a18acc 1px,             
+    transparent 1px,      
+    transparent 20px      
+  );
+  animation: moveLines 10s linear infinite;
+  min-height: 700px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes moveLines {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 20px;
+  }
+}
+
+.container {
+  background: #ffffff;
+  border: 1px solid #6930c3;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.062);
+  width: 600px;
+  margin: 10px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #3d0e61;
+  font-weight: 800;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+#inputTextArea {
+  width: 80%;
+  height: 200px;
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+
+#inputTextArea:focus {
+  border-color: #6a4bc9;
+  box-shadow: 0 0 5px rgba(106, 75, 201, 0.5);
+}
+
+.btn {
+  margin-top: 20px;
+  background: #9333ea;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn:hover {
+  background: #6b21a8;
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(107, 33, 168, 0.3);
+}
+
+.btn svg {
+  transition: transform 0.3s ease;
+}
+
+.btn:hover svg {
+  transform: rotate(15deg) scale(1.2);
+  fill: #fff;
+}
+
+h6 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.5;
+  margin: 0;
+  color: #3d0e61;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 25px 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Word Counter for CCIT06</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <script>
+    function updateLiveCount() {
+      const text = document.getElementById("inputTextArea").value;
+      document.getElementById("liveCharCount").innerText = text.length;
+    }
+
+    function resetFields() {
+      document.getElementById("inputTextArea").value = "";
+      document.getElementById("liveCharCount").innerText = "0";
+    }
+
+    function copyText() {
+      const textArea = document.getElementById("inputTextArea");
+      textArea.select();
+      document.execCommand("copy");
+      alert("Text copied to clipboard!");
+    }
+  </script>
+</head>
+
+<body>
+  
+ <main>
+
+  <div class="container">
+    <h1 class="title">Word Counter</h1>
+
+    <form method="POST" action="/">
+      <label for="inputTextArea">Enter sentence or paragraph below:</label>
+
+      <textarea
+        name="input_text"
+        id="inputTextArea"
+        rows="8"
+        placeholder="Type your text here..."
+        onkeyup="updateLiveCount()"
+      >{{ input_text }}</textarea>
+
+      <div class="button-group">
+        <button type="submit" name="action" value="submit" class="btn">Count Words</button>
+        <button type="submit" name="action" value="reset" class="btn btn-secondary">Reset</button>
+        <button type="button" onclick="copyText()" class="btn btn-outline">Copy</button>
+      </div>
+    </form>
+
+    <div class="results">
+      <h6>Total Words: <span>{{ word_count }}</span></h6>
+      <h6>Characters: <span>{{ char_count }}</span></h6>
+      <h6>Sentences: <span>{{ sentence_count }}</span></h6>
+      <h6>Estimated Reading Time: <span>{{ reading_time }} min</span></h6>
+      <h6>Live Characters: <span id="liveCharCount">{{ input_text | length }}</span></h6>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>
